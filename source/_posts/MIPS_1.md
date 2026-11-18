@@ -14,7 +14,7 @@ toc:
   # 是否自动换行
   wrap: false
   # 是否展开所有目录项
-  expand_all: false
+  expand_all: true
   # 最大目录深度
   max_depth: 6
 ---
