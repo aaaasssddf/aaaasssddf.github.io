@@ -98,6 +98,18 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: kratos-rebirth
 
+# Pandoc renders $...$ and $$...$$ to native MathML.
+# Keep existing line breaks, tables and headings without requiring blank lines.
+pandoc:
+  pandocPath: pandoc
+  timeout: 10000
+  args:
+    - --from
+    - markdown+tex_math_dollars+tex_math_single_backslash+hard_line_breaks-blank_before_header-implicit_figures
+    - --to
+    - html5
+    - --mathml
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
