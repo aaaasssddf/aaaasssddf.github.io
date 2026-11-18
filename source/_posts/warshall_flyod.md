@@ -6,6 +6,17 @@ tags:
 - 算法
 categories:
 - 算法分析与设计
+toc:
+  # 是否启用目录
+  enable: true
+  # 是否自动添加目录编号
+  number: true
+  # 是否自动换行
+  wrap: false
+  # 是否展开所有目录项
+  expand_all: false
+  # 最大目录深度
+  max_depth: 6
 ---
 
 # Warshall（沃舍尔）算法
