@@ -51,8 +51,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0
       marked:
-        specifier: 15.0.4
-        version: 15.0.4
+        specifier: 18.2.0
+        version: 18.2.0
 
 packages:
 
@@ -761,9 +761,9 @@ packages:
   lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
 
-  marked@15.0.4:
-    resolution: {integrity: sha512-TCHvDqmb3ZJ4PWG7VEGVgtefA5/euFmsIhxtD0XsBxI39gUSKL81mIRFdt0AiNQozUahd4ke98ZdirExd/vSEw==}
-    engines: {node: '>= 18'}
+  marked@18.2.0:
+    resolution: {integrity: sha512-KaeL+tAbtvI930q7HE2PN5lYXYdT8EiSmxHlN6F3rsfb57wd5mp5W5TLazpdj4inTQBJdgjYwbs40W/0VUGU+Q==}
+    engines: {node: '>= 20'}
     hasBin: true
 
   math-intrinsics@1.1.0:
@@ -2106,7 +2106,7 @@ snapshots:
     dependencies:
       tslib: 2.9.1
 
-  marked@15.0.4: {}
+  marked@18.2.0: {}
 
   math-intrinsics@1.1.0: {}
 
