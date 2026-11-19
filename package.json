@@ -30,6 +30,6 @@
     "hexo-theme-kratos-rebirth": "3.0.0-rc.0",
     "hexo-theme-landscape": "^1.0.0",
     "hexo-util": "4.0.0",
-    "marked": "15.0.4"
+    "marked": "18.2.1"
   }
 }
