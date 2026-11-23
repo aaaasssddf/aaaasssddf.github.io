@@ -1,2 +1,5 @@
 allowBuilds:
   hexo-util: true
+  # These postinstall scripts only print informational messages.
+  ejs: false
+  highlight.js: false
