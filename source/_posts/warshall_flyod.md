@@ -1,11 +1,11 @@
 ---
 title: 算法学习笔记:Warshall算法和Floyd算法
 date: 2026-11-18 16:59:43
-tags:
-- 图论
-- 算法
 categories:
-- 算法分析与设计
+  - 算法分析与设计
+tags:
+  - 图论
+  - 算法
 toc:
   # 是否启用目录
   enable: true
