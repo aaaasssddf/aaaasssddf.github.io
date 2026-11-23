@@ -2,7 +2,7 @@
 title: MIPS学习笔记（番外篇）：实用宏合集
 date: 2026-11-21 20:04:34
 tags:
-- MIPS
+- MIPS汇编
 - 计硬
 categories: 
 - 计算机硬件基础
