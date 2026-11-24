@@ -11,7 +11,7 @@ cover: "/assets/cover/4.png"
 excerpt: "汇总可复用的 MIPS 宏，涵盖程序退出、整数与字符串输入输出、数组元素与字符读写，以及求最值、判断质数和求最大公约数。各示例附有参数说明，方便上机时查阅。"
 ---
 # 写在前面
-计硬的p2上机允许携带纸质材料，不允许使用自己的电脑或者带电子资料，这里存了一些有用的宏，可以打印出来上机的时候复现。多用宏实现一些可复用的功能可以提高程序可读性，降低debug难度。以下这些宏会占用`$t6 ~ $t9`寄存器，使用时不要在这几个寄存器存数据以防被覆盖
+计硬的p2上机允许携带纸质材料，不允许使用自己的电脑或者带电子资料，这里存了一些有用的宏，可以打印出来上机的时候复现。多用宏实现一些可复用的功能可以提高程序可读性，降低debug难度。以下这些宏会占用`$t6 ~ $t9`寄存器，使用时不要在这几个寄存器存数据以防被覆盖。部分宏由ai生成。
 # 结束程序与输入输出
 ## 结束程序
 ```mipsasm
@@ -162,5 +162,31 @@ gcd_loop:
     j     gcd_loop
 gcd_done:
     move  %dst, $t8
+.end_macro
+```
+## 冒泡排序
+```mipsasm
+.macro SORT_ARR(%arr, %n)
+    ble   %n, 1, sort_done   # 0或1个元素，不用排序
+    la    $t8, %arr
+    sll   $t9, %n, 2
+    addu  $t9, $t8, $t9
+    addiu $t9, $t9, -4       # 本轮最后一个待排序元素的地址
+sort_outer:
+    la    $t8, %arr           # 每轮从数组开头比较
+    bgeu  $t8, $t9, sort_done
+sort_inner:
+    lw    $t6, 0($t8)         # 当前元素
+    lw    $t7, 4($t8)         # 后一个元素
+    ble   $t6, $t7, sort_next # 已满足升序，不交换
+    sw    $t7, 0($t8)         # 交换相邻元素
+    sw    $t6, 4($t8)
+sort_next:
+    addiu $t8, $t8, 4
+    bltu  $t8, $t9, sort_inner
+    addiu $t9, $t9, -4        # 最大值归位，缩小排序范围
+    j     sort_outer
+
+sort_done:
 .end_macro
 ```
