@@ -7,6 +7,7 @@ categories:
 tags:
   - MIPS汇编
   - 计硬
+order: 2
 ---
 
 # 流程控制

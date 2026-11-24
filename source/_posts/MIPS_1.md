@@ -17,6 +17,7 @@ toc:
   expand_all: true
   # 最大目录深度
   max_depth: 6
+order: 1
 ---
 
 
