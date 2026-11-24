@@ -2,7 +2,6 @@
 title: MIPS学习笔记（2）：流程控制、数组和字符串
 toc: true
 date: 2026-11-24 00:09:07
-tags:
 categories:
   - 计算机硬件基础
 tags:
