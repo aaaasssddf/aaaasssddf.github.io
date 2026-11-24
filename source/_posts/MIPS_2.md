@@ -8,6 +8,8 @@ tags:
   - MIPS汇编
   - 计硬
 order: 2
+cover: "/assets/cover/2.png"
+excerpt: "用 C++ 与 MIPS 的对照示例，讲解如何用分支和跳转实现多重条件判断、逻辑与或和循环。随后介绍如何在 .data 段声明数组和字符串、按字节偏移访问元素，以及用 syscall 读写字符串。"
 ---
 
 # 流程控制

@@ -18,6 +18,8 @@ toc:
   # 最大目录深度
   max_depth: 6
 order: 1
+cover: "/assets/cover/1.png"
+excerpt: "从一条加法指令入门，认识 MIPS 的指令格式、寄存器和标签，再通过示例学习算术、位运算、分支、跳转和伪指令，以及如何在 MARS 中用 syscall 完成基本输入输出。"
 ---
 
 
