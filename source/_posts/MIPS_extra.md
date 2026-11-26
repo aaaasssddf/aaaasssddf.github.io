@@ -58,6 +58,22 @@ excerpt: "汇总可复用的 MIPS 宏，涵盖程序退出、整数与字符串�
 .end_macro
 ```
 # 数组与字符串读取
+## 数组初始化
+```mipsasm
+```mipsasm
+.macro FILL_ARR(%arr, %n, %value)
+    la    $t8, %arr
+    move  $t9, %n
+    move  $t7, %value
+    blez  $t9, fill_done
+fill_loop:
+    sw    $t7, 0($t8)
+    addiu $t8, $t8, 4
+    addiu $t9, $t9, -1
+    bnez  $t9, fill_loop
+fill_done:
+.end_macro
+```
 ## 读取数组某项
 `%dest`是目标寄存器位置，`%index`是下标（从0开始），`%arr`是数组
 ```mipsasm
@@ -95,6 +111,40 @@ excerpt: "汇总可复用的 MIPS 宏，涵盖程序退出、整数与字符串�
     addu $t8, $t9, %index
     sb  %src, 0($t8)
 .end_macro
+```
+## 数组求和
+```mipsasm
+```mipsasm
+.macro SUM_ARR(%dst, %arr, %n)
+    la    $t8, %arr
+    move  $t9, %n
+    li    $t7, 0
+    blez  $t9, sum_done
+sum_loop:
+    lw    $t6, 0($t8)
+    addu  $t7, $t7, $t6
+    addiu $t8, $t8, 4
+    addiu $t9, $t9, -1
+    bnez  $t9, sum_loop
+sum_done:
+    move  %dst, $t7
+.end_macro
+```
+## 字符串长度
+```mipsasm
+.macro STRLEN(%dst, %str)
+    la    $t8, %str
+    li    $t7, 0
+len_loop:
+    lbu   $t6, 0($t8)
+    beqz  $t6, len_done
+    addiu $t7, $t7, 1
+    addiu $t8, $t8, 1
+    j     len_loop
+len_done:
+    move  %dst, $t7
+.end_macro
+```
 ```
 # 其它
 ## 两数最小值
@@ -188,5 +238,71 @@ sort_next:
     j     sort_outer
 
 sort_done:
+.end_macro
+```
+## 二分查找
+```mipsasm
+# dst = 在arr[first..last)中查找value
+# 找到返回匹配下标；找不到返回last
+.macro STL_BINARY_SEARCH(%dst, %arr, %first, %last, %value)
+    move  $t6, %first
+    move  $t7, %last
+
+bs_loop:
+    bge   $t6, $t7, bs_not_found
+    subu  $t8, $t7, $t6
+    srl   $t8, $t8, 1
+    addu  $t8, $t6, $t8      # mid = left + (right-left)/2
+
+    sll   $t9, $t8, 2
+    lw    $t9, %arr($t9)     # arr[mid]
+
+    beq   $t9, %value, bs_found
+    blt   $t9, %value, bs_right
+    move  $t7, $t8
+    j     bs_loop
+
+bs_right:
+    addiu $t6, $t8, 1
+    j     bs_loop
+
+bs_found:
+    move  %dst, $t8
+    j     bs_done
+
+bs_not_found:
+    move  %dst, %last
+
+bs_done:
+.end_macro
+```
+## 数组区间反转
+```mipsasm
+# 原地反转arr[first..last)
+.macro STL_REVERSE(%arr, %first, %last)
+    move  $t6, %first
+    move  $t7, %last
+    bge   $t6, $t7, rev_done
+
+    sll   $t6, $t6, 2
+    sll   $t7, $t7, 2
+    la    $t8, %arr
+    addu  $t6, $t8, $t6      # 左侧元素地址
+    addu  $t7, $t8, $t7
+    addiu $t7, $t7, -4       # 右侧元素地址
+
+rev_loop:
+    bgeu  $t6, $t7, rev_done
+
+    lw    $t8, 0($t6)
+    lw    $t9, 0($t7)
+    sw    $t9, 0($t6)
+    sw    $t8, 0($t7)
+
+    addiu $t6, $t6, 4
+    addiu $t7, $t7, -4
+    j     rev_loop
+
+rev_done:
 .end_macro
 ```
