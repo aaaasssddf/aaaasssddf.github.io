@@ -57,8 +57,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0
       marked:
-        specifier: 15.0.4
-        version: 15.0.4
+        specifier: 18.3.0
+        version: 18.3.0
 
 packages:
 
@@ -1263,9 +1263,9 @@ packages:
     resolution: {integrity: sha512-ctGPIcuqsYoJ493sCtFK7H4UEgMWAUdXeBhPbdsg1W0LsV9yJELAHRsMmWfTgao6nH0/x5gf9FmsbxiXnrgaIQ==}
     hasBin: true
 
-  marked@15.0.4:
-    resolution: {integrity: sha512-TCHvDqmb3ZJ4PWG7VEGVgtefA5/euFmsIhxtD0XsBxI39gUSKL81mIRFdt0AiNQozUahd4ke98ZdirExd/vSEw==}
-    engines: {node: '>= 18'}
+  marked@18.3.0:
+    resolution: {integrity: sha512-ed8zmPXlBb3UfGXN5iHMQyMhFpdqLgoV5umUXx/Q1R+FW3q8VpqpyoKUwlENL9appo2UMvNLURDVaT3AMOryGA==}
+    engines: {node: '>= 20'}
     hasBin: true
 
   math-intrinsics@1.1.0:
@@ -3513,7 +3513,7 @@ snapshots:
     dependencies:
       nopt: 2.1.2
 
-  marked@15.0.4: {}
+  marked@18.3.0: {}
 
   math-intrinsics@1.1.0: {}
 
